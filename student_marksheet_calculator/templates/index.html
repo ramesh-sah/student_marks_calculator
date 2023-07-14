@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marksheet</title>
+  <style>
+   body {
+    font-family: Arial, sans-serif;
+    background-color: #44389F;
+  }
+
+  #container {
+    text-align: center;
+    background-color: #0C4454;
+  }
+
+  h1 {
+    color: #000000;
+    margin-bottom: 30px;
+  }
+
+  form {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    display: inline-block;
+    background-color: #BCBAC5;
+  }
+
+  label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+  }
+
+  input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #1A2F1B;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  table {
+    width: 400px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #411690;
+    color: white;
+  }
+
+  .result {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  #resultContainer {
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Student Marksheet Calculator</h1>
+
+    <form id="marksheetForm" method="POST">
+      {% csrf_token %}
+      <label for="name">Student Name:</label>
+      <input type="text" id="name" name="name" value="{{name}}" required>
+      {% if form.name.errors %}
+        <div class="error">{{ form.name.errors }}</div>
+      {% endif %}<br>
+
+      <label for="english">Marks in English:</label>
+      <input type="text" id="english" name="english" value="{{english}}" required>
+      {% if form.english.errors %}
+        <div class="error">{{ form.english.errors }}</div>
+      {% endif %}<br>
+
+      <label for="maths">Marks in Maths:</label>
+      <input type="text" id="maths" name="maths" value="{{maths}}" required>
+      {% if form.maths.errors %}
+        <div class="error">{{ form.maths.errors }}</div>
+      {% endif %}<br>
+
+      <label for="science">Marks in Science:</label>
+      <input type="text" id="science" name="science" value="{{science}}" required>
+      {% if form.science.errors %}
+        <div class="error">{{ form.science.errors }}</div>
+      {% endif %}<br>
+
+      <label for="computerscience">Marks in Computer Science:</label>
+      <input type="text" id="computerscience" name="computerscience" value="{{computerscience}}" required>
+      {% if form.computerscience.errors %}
+        <div class="error">{{ form.computerscience.errors }}</div>
+      {% endif %}<br>
+
+      <label for="socialstudies">Marks in Social Studies:</label>
+      <input type="text" id="socialstudies" name="socialstudies" value="{{socialstudies}}" required>
+      {% if form.socialstudies.errors %}
+        <div class="error">{{ form.socialstudies.errors }}</div>
+      {% endif %}<br>
+
+      <input type="submit" value="Submit">
+    </form>
+
+    <div id="resultContainer" class="result" style="display;">
+      <label for="total">Total Marks:</label>
+      <input type="text" id="total" value="{{total}}"><br>
+
+      <label for="percentage">Result in Percentage:</label>
+      <input type="text" id="percentage" value="{{percentage}}"><br>
+
+      <label for="grade">Result in Grade:</label>
+      <input type="text" id="grade" value="{{grade}}"><br>
+    </div>
+  </div>
+</body>
+</html>
